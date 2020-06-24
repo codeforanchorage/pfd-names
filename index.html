@@ -13,36 +13,19 @@
                         $limit : 5000,
                         $offset: 0,
                         $where: `first_name='${name.toUpperCase()}'`
-                        // $where: `first_name in ('${name.toUpperCase()}', 'JAMES')`
                     }
                 }).done(function(data) {
                     data.sort((a, b) => parseInt(a.year) - parseInt(b.year))
                     console.log(data)
                     console.log(data.map(d => ({x: parseInt(d.year), y: parseInt(d.count)})))
 
-                    const ctx = document.getElementById('results').getContext('2d');
-                    const myLineChart = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            // labels: data.map(d => d.year),
-                            // datasets: [{
-                            //     label: name,
-                            //     data: data.map(d => parseInt(d.count)),
-                            // }],
-                            datasets: [{
-                                label: name,
-                                data: data.map(d => ({x: parseInt(d.year), y: parseInt(d.count)}))
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                xAxes: [{
-                                    type: 'linear',
-                                    position: 'bottom'
-                                }]
-                            }
-                        }
-                    });
+                    myLineChart.data.datasets = []
+                    myLineChart.data.datasets = [{
+                        label: name,
+                        data: data.map(d => ({x: parseInt(d.year), y: parseInt(d.count)}))
+                    }]
+                    myLineChart.update()
+                    console.log('done')
                 });
             }
         </script>
@@ -55,6 +38,20 @@
 
         <canvas id="results" width="400" height="400"></canvas>
 
-        <script>getNameData()</script>
+        <script>
+            const ctx = document.getElementById('results').getContext('2d');
+            const myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: { },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            type: 'linear',
+                            position: 'bottom'
+                        }]
+                    }
+                }
+            });
+        </script>
     </body>
 </html>
