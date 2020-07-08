@@ -63,15 +63,43 @@
                 return false;
             }
         </script>
+
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            h1 {
+                text-align: center;
+            }
+            form {
+                margin-top: 50px;
+            }
+        </style>
     </head>
 
     <body style="padding:20px;">
+        <h1>Alaskan names</h1>
+
+        <p>Type a name and see how many Alaskans have filed for the PFD with that name for each year.</p>
+        <p>Try multiple names seperated with commas.</p>
+
         <form onsubmit="handleSubmit()">
             <input id="name" style="width:60%; margin-left:55px; margin-bottom:20px;" />
             <input type="submit" value="Go" />
         </form>
 
         <canvas id="results"></canvas>
+
+        <h3>Interesting data</h3>
+        <ul>
+            <li><a href="#ethan">Biggest Increase (male)</a></li>
+            <li><a href="#abigail">Biggest Increase (female)</a></li>
+            <li><a href="#robert">Biggest Decrease (male)</a></li>
+            <li><a href="#mary">Biggest Decrease (female)</a></li>
+            <li><a href="#ethan,abigail,noah,olivia,isabella,sophia,logan,emma,elijah,mason">Top 10 names on the rise</a></li>
+            <li><a href="#sunday,monday,tuesday,wednesday,thursday,friday,saturday">Days of the week</a></li>
+            <li><a href="#january,february,march,april,may,june,july,august,september,october,november,december">Months of the year</a></li>
+        </ul>
 
         <script>
             const ctx = document.getElementById('results').getContext('2d');
@@ -98,11 +126,19 @@
                 }
             });
 
-            if (window.location.hash) {
+            function drawGraphFromHash() {
                 const names = decodeURI(window.location.hash.replace('#', ''))
                 document.getElementById('name').value = names
                 getNameData()
             }
+
+            if (window.location.hash) {
+                drawGraphFromHash()
+            }
+
+            window.addEventListener('hashchange', function() {
+                drawGraphFromHash()
+            }, false)
         </script>
     </body>
 </html>
