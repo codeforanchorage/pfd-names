@@ -80,6 +80,9 @@
 
             function handleSubmit() {
                 window.location.hash = document.getElementById('name').value;
+                ga('send', 'pageview', {
+                    'page': location.pathname + location.search  + location.hash
+                });
                 return false;
             }
         </script>
@@ -121,7 +124,7 @@
             <li><a href="#january,february,march,april,may,june,july,august,september,october,november,december">Months of the year</a></li>
             <li><a href="#Anchorage,Fairbanks,Juneau,Sitka,Wasilla,Kenai,Kodiak,Bethel,Palmer,Homer,Unalaska">Cities in Alaska</a></li>
             <li><a href="#Alabama,Alaska,AmericanSamoa,Arizona,Arkansas,California,Colorado,Connecticut,Delaware,Florida,Georgia,Guam,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,Kentucky,Louisiana,Maine,Maryland,Massachusetts,Michigan,Minnesota,MinorOutlyingIslands,Mississippi,Missouri,Montana,Nebraska,Nevada,NewHampshire,NewJersey,NewMexico,NewYork,NorthCarolina,NorthDakota,NorthernMarianaIslands,Ohio,Oklahoma,Oregon,Pennsylvania,PuertoRico,RhodeIsland,SouthCarolina,SouthDakota,Tennessee,Texas,U.S.VirginIslands,Utah,Vermont,Virginia,Washington,WestVirginia,Wisconsin,Wyoming">States in the union</a></li>
-            <li><a href="#wolf,bear,eagle,fox,lynx,salmon,trout,otter,beaver">Alaskan animals</a></li>
+            <li><a href="#wolf,bear,eagle,fox,lynx,salmon,trout,otter,beaver,raven">Alaskan animals</a></li>
         </ul>
 
         <script>
