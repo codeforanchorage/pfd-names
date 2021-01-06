@@ -1,0 +1,2 @@
+1. download latest csv export of names (https://data.muni.org/Other/PFD_Names/utuq-8d9h/data)
+2. run `node fast.js` to processes the data about winners and losers
