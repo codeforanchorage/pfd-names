@@ -1,7 +1,7 @@
 const fs = require('fs')
 
-const BASE_YEAR = '2019'
-const CURRENT_YEAR = '2020'
+const BASE_YEAR = '2020'
+const CURRENT_YEAR = '2021'
 
 console.time('readFileSync')
 const data = fs.readFileSync('./PFD_Names.csv')
